@@ -5,12 +5,16 @@
   </ion-col>
   <ion-col class="contenedorDescripcion">
     <label class="lblName">{{itemHotel.name}}</label>
-    <label class="icon-start"></label>
-    <div  class="contenedorAmenitie">
-    <div  class="amenitie" *ngFor="let amenitie of itemHotel.amenities">
-      <img src="assets/amenities/{{amenitie}}.svg" style="width: 100%; height: 100%;"/>
+    <div class="contenedorStart">
+      <div class="lblStart" *ngFor="let estrellas of cantidadEstrellas(itemHotel.stars)">
+        <label class="icon-start"></label>
+      </div>
     </div>
-  </div>
+    <div class="contenedorAmenitie">
+      <div class="amenitie" *ngFor="let amenitie of itemHotel.amenities">
+        <img src="assets/amenities/{{amenitie}}.svg" style="width: 100%; height: 100%;" />
+      </div>
+    </div>
   </ion-col>
   <ion-col class="contenedorValor">
     <label>Precio por noche por habitación</label>

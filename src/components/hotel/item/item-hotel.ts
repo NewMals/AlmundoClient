@@ -14,11 +14,18 @@ import { hotel } from '../../../modelo/hotel';
 export class ItemHotelComponent {
 
   text: string;
-  @Input() itemHotel: hotel;
+  @Input() itemHotel = new hotel;
 
   constructor() {
     console.log('Hello ItemHotelComponent Component');
     this.text = 'Hello World';
   }
 
+  cantidadEstrellas(cantidad){
+    let estrellas: number[] = [];
+    for(var i = 1; i <= cantidad; i++){
+      estrellas.push(i);
+    }
+    return estrellas;
+  }
 }

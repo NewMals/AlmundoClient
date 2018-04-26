@@ -5,19 +5,17 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-
-
 <ion-content padding>
   <ion-row>
     <ion-col class="PanelIzq">
-      <filtros></filtros>
+      <filtros (filtrarHoteles)="filtros($event)"></filtros>
     </ion-col>
     <ion-col>
       <div *ngFor="let hotel of ListaHoteles">
-        <ion-card  class="itemHotel" >
+        <ion-card class="itemHotel">
           <item-hotel [itemHotel]="hotel"></item-hotel>
-      </ion-card>
-    </div>
+        </ion-card>
+      </div>
     </ion-col>
   </ion-row>
 </ion-content>

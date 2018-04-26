@@ -1,19 +1,19 @@
 item-hotel {
     .contenedorImg{
-        height: 200px; 
+        height: 250px; 
         max-width: 35%;
         display: grid;
         padding: 10px;
     }
 
     .contenedorDescripcion{
-        height: 200px; 
+        height: 250px; 
         max-width: 35%;
         padding: 10px;
     }
 
     .contenedorValor{
-        height: 150px; 
+        height: 240px; 
         max-width: 25%;
         text-align: center;        
         border-left: 1px darkgray dashed;
@@ -27,15 +27,17 @@ item-hotel {
         height: 100%;
     }
 
-    .lblName{
-        color: dodgerblue;
-        font-weight: bold;
-        font-size: 16px;
+  
+
+    .lblStart{
+        display: grid;
+        padding: 5px;
     }
     
     .contenedorAmenitie {
         display: flex;
     }
+
 
     .amenitie{
         height: 30px;
@@ -46,22 +48,15 @@ item-hotel {
     }
 
     .lblValor{
-        font-size: 20px;
+        font-size: 25px;
         color: #d86a00;
         font-weight: bold;
     }
     
     .lblCode {
         color: #d86a00;
-        font-size: 15px;
+        font-size: 20px;
     }
 
-    .BtnVer{
-        background-color: darkblue;
-        color: white; 
-        font-weight: bold;
-        border-radius: 4px;
-        height: 40px;
-        font-size: 18px;
-    }
+
 }

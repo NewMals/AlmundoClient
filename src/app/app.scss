@@ -10,7 +10,7 @@
     background-image: url("../../assets/icon/star.svg");
     display: inline-block;
     background-repeat: no-repeat;
-    height: 20px;
+    height: 15px;
     width: 20px;
     }   
 
@@ -21,3 +21,25 @@
     height: 15px;
     width: 20px;
  }
+
+ .lblName{
+  color: dodgerblue;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+   
+
+.BtnVer{
+  background-color: darkblue;
+  color: white; 
+  font-weight: bold;
+  border-radius: 4px;
+  height: 40px;
+  font-size: 18px;
+}
+
+.contenedorStart{
+  display: flex;
+  max-width: 20px;
+}

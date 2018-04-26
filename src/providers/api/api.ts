@@ -16,10 +16,16 @@ export class ApiProvider {
     console.log('Hello ApiProvider Provider');
   }
 
-  consultar(controlador: string) {
+  consultarGlobal(controlador: string) {
       return this.http.get(controlador).toPromise().then(response =>{
         return response;
       });
  
+  }
+
+  consultar(controlador: string, nombre: string){
+    return this.http.get(controlador + nombre).toPromise().then(response =>{
+       return response;
+    });
   }
 }
