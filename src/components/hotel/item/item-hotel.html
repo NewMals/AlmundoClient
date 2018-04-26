@@ -1,18 +1,24 @@
 <!-- Generated template for the ItemHotelComponent component -->
-  <ion-row>
-    <ion-col class="contenedorImg">      
-      <img src="assets/hotels/{{itemHotel.image}}" class="imagen"/>
-    </ion-col>
-    <ion-col class="contenedorDescripcion">
-      <label>{{itemHotel.name}}</label>
-    </ion-col>
-    <ion-col class="contenedorValor">
-        <label>Precio por noche por habitación</label>
-        <label class="lblCode">ARS
-        <label class="lblValor">{{itemHotel.price | currency:'ARS':'symbol-narrow':'.0':'en-ES'}}</label>
-      </label>
-        <button class="BtnVer">
-            Ver hotel
-        </button>
-    </ion-col>
-  </ion-row>
+<ion-row>
+  <ion-col class="contenedorImg">
+    <img src="assets/hotels/{{itemHotel.image}}" class="imagen" />
+  </ion-col>
+  <ion-col class="contenedorDescripcion">
+    <label class="lblName">{{itemHotel.name}}</label>
+    <label class="icon-start"></label>
+    <div  class="contenedorAmenitie">
+    <div  class="amenitie" *ngFor="let amenitie of itemHotel.amenities">
+      <img src="assets/amenities/{{amenitie}}.svg" style="width: 100%; height: 100%;"/>
+    </div>
+  </div>
+  </ion-col>
+  <ion-col class="contenedorValor">
+    <label>Precio por noche por habitación</label>
+    <label class="lblCode">ARS
+      <label class="lblValor">{{itemHotel.price | currency:'ARS':'symbol-narrow':'.0':'en-ES'}}</label>
+    </label>
+    <button class="BtnVer">
+      Ver hotel
+    </button>
+  </ion-col>
+</ion-row>
