@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
+import { IonicPageModule, IonicModule } from 'ionic-angular';
 import { BuscarHabitacionesPage } from './buscar-habitaciones';
 import { ComponentsModule } from '../../components/components.module';
 
@@ -9,6 +9,7 @@ import { ComponentsModule } from '../../components/components.module';
   ],
   imports: [
     ComponentsModule,
+    IonicModule,
     IonicPageModule.forChild(BuscarHabitacionesPage),
   ],
 })

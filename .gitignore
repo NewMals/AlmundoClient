@@ -28,6 +28,7 @@ plugins/
 plugins/android.json
 plugins/ios.json
 www/
+src/assets/hotels
 $RECYCLE.BIN/
 
 .DS_Store

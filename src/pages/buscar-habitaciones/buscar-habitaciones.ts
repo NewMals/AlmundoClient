@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ApiProvider } from '../../providers/api/api';
+import { hotel } from '../../modelo/hotel';
 
 /**
  * Generated class for the BuscarHabitacionesPage page.
@@ -15,11 +17,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class BuscarHabitacionesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  ListaHoteles : hotel[];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private api: ApiProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BuscarHabitacionesPage');
+    this.api.consultar('assets/data/data.json').then(lista =>{
+      this.ListaHoteles = lista as hotel[];
+    });
   }
 
 }

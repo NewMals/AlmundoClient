@@ -7,6 +7,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { BuscarHabitacionesPageModule } from '../pages/buscar-habitaciones/buscar-habitaciones.module';
+import { ApiProvider } from '../providers/api/api';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,7 @@ import { BuscarHabitacionesPageModule } from '../pages/buscar-habitaciones/busca
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BuscarHabitacionesPageModule, 
     IonicModule.forRoot(MyApp)
   ],
@@ -26,7 +29,8 @@ import { BuscarHabitacionesPageModule } from '../pages/buscar-habitaciones/busca
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ApiProvider
   ]
 })
 export class AppModule {}

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { hotel } from '../../../modelo/hotel';
 
 /**
  * Generated class for the ItemHotelComponent component.
@@ -13,6 +14,7 @@ import { Component } from '@angular/core';
 export class ItemHotelComponent {
 
   text: string;
+  @Input() itemHotel: hotel;
 
   constructor() {
     console.log('Hello ItemHotelComponent Component');

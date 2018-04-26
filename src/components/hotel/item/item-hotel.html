@@ -1,4 +1,18 @@
 <!-- Generated template for the ItemHotelComponent component -->
-<div>
-  {{text}}
-</div>
+  <ion-row>
+    <ion-col class="contenedorImg">      
+      <img src="assets/hotels/{{itemHotel.image}}" class="imagen"/>
+    </ion-col>
+    <ion-col class="contenedorDescripcion">
+      <label>{{itemHotel.name}}</label>
+    </ion-col>
+    <ion-col class="contenedorValor">
+        <label>Precio por noche por habitación</label>
+        <label class="lblCode">ARS
+        <label class="lblValor">{{itemHotel.price | currency:'ARS':'symbol-narrow':'.0':'en-ES'}}</label>
+      </label>
+        <button class="BtnVer">
+            Ver hotel
+        </button>
+    </ion-col>
+  </ion-row>

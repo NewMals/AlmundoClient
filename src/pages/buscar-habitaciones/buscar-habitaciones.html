@@ -8,5 +8,16 @@
 
 
 <ion-content padding>
-  <filtros></filtros>
+  <ion-row>
+    <ion-col class="PanelIzq">
+      <filtros></filtros>
+    </ion-col>
+    <ion-col>
+      <div *ngFor="let hotel of ListaHoteles">
+        <ion-card  class="itemHotel" >
+          <item-hotel [itemHotel]="hotel"></item-hotel>
+      </ion-card>
+    </div>
+    </ion-col>
+  </ion-row>
 </ion-content>
