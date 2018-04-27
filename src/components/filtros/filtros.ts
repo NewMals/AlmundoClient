@@ -82,31 +82,29 @@ export class FiltrosComponent {
   metFilEstrellas(filtro) {
 
     switch (filtro.check) {
-      case true : {
-        if (filtro.valor == 0) { 
+      case true: {
+        if (filtro.valor == 0) {
           this.filtroEstrella.forEach(estrella => {
-            if(estrella.valor != 0){
+            if (estrella.valor != 0) {
               estrella.check = false;
             }
-            
+
           });
           this.filtrosBuqueda.estrellas = new Array<number>();
           this.filtrosBuqueda.estrellas.push(filtro.valor);
-        } else
-        {
-          if(this.filtrosBuqueda.estrellas[0] == 0 ){
+        } else {
+          if (this.filtrosBuqueda.estrellas[0] == 0) {
             this.filtrosBuqueda.estrellas.shift();
-            this.filtroEstrella[0].check =false;
-            console.log(this.filtroEstrella);
+            this.filtroEstrella[0].check = false;
           }
-          
+
           this.filtrosBuqueda.estrellas.push(filtro.valor);
           this.filtrarHoteles.emit(this.filtrosBuqueda);
         }
         break;
       }
-      case false :{
-        this.filtrosBuqueda.estrellas.splice(this.filtrosBuqueda.estrellas.indexOf(filtro.valor) , 1);
+      case false: {
+        this.filtrosBuqueda.estrellas.splice(this.filtrosBuqueda.estrellas.indexOf(filtro.valor), 1);
         this.filtrarHoteles.emit(this.filtrosBuqueda);
         break;
       }

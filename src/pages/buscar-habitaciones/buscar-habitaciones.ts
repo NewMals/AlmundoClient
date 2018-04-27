@@ -40,9 +40,9 @@ export class BuscarHabitacionesPage implements OnInit {
 
     this.ListaHoteles = this.ListaHoteles.filter(i =>
       ( i.name.toLowerCase().indexOf(fil.nombre.toLowerCase()) !== -1) ||
-      fil.estrellas.find(start => i.starts == start)
+      (fil.estrellas.find(start => start ===  i.starts))
     );
-    console.log('filtro', fil, this.ListaHoteles)
+    // console.log('filtro',fil.estrellas.find(start => start === 5));
   }
 
 }
