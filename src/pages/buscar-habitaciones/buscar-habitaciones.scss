@@ -8,4 +8,15 @@ page-buscar-habitaciones {
         min-height: 25%;
         min-width: 25%;
     }
+
+    @media screen and (max-width: 650px) {
+        .PanelIzq{
+            max-width: 100%;
+        }
+
+        .itemHotel {
+            min-height: 25%;
+            padding: 20px;
+        }
+    }
 }

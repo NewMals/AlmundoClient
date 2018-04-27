@@ -6,11 +6,31 @@ filtros {
         border-bottom: 10px solid #f8f8f8;
     }
 
+    .ContenedorFiltroApp{
+        display: none;
+    }
+
+    .contenedorStart{
+        max-width: none;
+    }
     .contenedorCol{
         max-width: 80px;
     }
     .contenedorRow{
         display: flex;
         align-items: center;
+    }
+
+    @media screen and (max-width: 650px) {
+        .ContenedorFiltroApp{
+            display: block;
+            color: dodgerblue;
+            text-align: center;
+            width: 100%;
+        }
+
+        .ContenedorFiltroWeb{
+            display: none;
+        }
     }
 }

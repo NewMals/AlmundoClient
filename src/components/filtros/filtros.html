@@ -1,18 +1,24 @@
 <!-- Generated template for the FiltrosComponent component -->
 <div>
-  <ion-card>
+  <ion-item #filtro class="ContenedorFiltroApp" >
+      <label class="lblName">Filtrar</label>
+      <button style="background: transparent" (click)="Mostrar('Filter')">
+          <ion-icon color="primary" [name]="iconFilter"></ion-icon>
+        </button>
+  </ion-item>
 
-    <ion-card-content>
+  <ion-card>
+    <ion-card-content class="ContenedorFiltroWeb">
       <h2>
-        <strong>Filtros</strong>
+        <strong >Filtros</strong>
       </h2>
     </ion-card-content>
-
+    <div  *ngIf="Filter">
     <ion-card-content>
       <ion-item>
         <label class="icon-search"></label>
         <label class="lblName">Nombre de hotel</label>
-        <button item-end style="background: transparent" (click)="MostrarSearch()">
+        <button item-end style="background: transparent" (click)="Mostrar('Search')">
           <ion-icon color="primary" [name]="iconSearch"></ion-icon>
         </button>
       </ion-item>
@@ -31,7 +37,7 @@
       <button ion-item>
         <label class="icon-start"></label>
         <label class="lblName">Estrellas</label>
-        <button item-end style="background: transparent" (click)="MostrarStart()">
+        <button item-end style="background: transparent" (click)="Mostrar('Start')">
           <ion-icon color="primary" [name]="iconStart"></ion-icon>
         </button>
       </button>
@@ -41,12 +47,13 @@
           <ion-checkbox (ionChange)="metFilEstrellas(filtro)"></ion-checkbox>
         </ion-item>
         <ion-item *ngFor="let filtro of filtroEstrella.reverse()">
-          <ion-label class="contenedorStart" *ngFor="let estrellas of cantidadEstrellas(filtro.valor)">
-            <label class="icon-start"></label>
+          <ion-label class="contenedorStart">
+            <label class="icon-start" [ngStyle]="{'width' : filtro.valor * 2 + '0px' , 'background-repeat': 'space' , 'background-size': '20px' , 'height': '20px' }"></label>
           </ion-label>
           <ion-checkbox [(ngModel)]="filtro.check" (ionChange)="metFilEstrellas(filtro.valor)"></ion-checkbox>
         </ion-item>
       </div>
     </ion-card-content>
+  </div>
   </ion-card>
 </div>

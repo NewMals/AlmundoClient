@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, ElementRef, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 
 /**
  * Generated class for the FiltrosComponent component.
@@ -10,16 +10,22 @@ import { Component, Output, EventEmitter } from '@angular/core';
   selector: 'filtros',
   templateUrl: 'filtros.html'
 })
-export class FiltrosComponent {
+export class FiltrosComponent implements OnChanges {
+
+
+  ngOnChanges(): void {
+      console.log(this.filtro.nativeElement);
+  }
 
   iconUp: string = "ios-arrow-up"
   iconDown: string = "ios-arrow-down"
+  iconFilter: string;
   iconSearch: string;
-  iconStart: string;  
+  iconStart: string;
   Search: boolean = true;
-  Start: boolean =true;
-  x : number = 0;
-  text: string;
+  Start: boolean = true;
+  Filter: boolean = true;
+
   filtroEstrella = [
     { valor: 1, check: false }
     , { valor: 2, check: false }
@@ -27,46 +33,64 @@ export class FiltrosComponent {
     , { valor: 4, check: false }
     , { valor: 5, check: false }]
     ;
-  @Output() filtrarHoteles : EventEmitter<any> = new EventEmitter<any>();
-
+  @Output() filtrarHoteles: EventEmitter<any> = new EventEmitter<any>();
+  @ViewChild('filtro') filtro : ElementRef
 
   constructor() {
     console.log('Hello FiltrosComponent Component');
     this.iconSearch = this.iconUp;
     this.iconStart = this.iconUp;
+    this.iconFilter = this.iconUp;
+
   }
 
-  MostrarSearch(){
-    this.Search  = !this.Search;
-    if(this.Search == true){
-      this.iconSearch = this.iconUp;
-    }else{
-      this.iconSearch = this.iconDown;
+
+  Mostrar(valor) {
+    switch (valor) {
+      case "Search": {
+        this.Search = !this.Search;
+        if (this.Search == true) {
+          this.iconSearch = this.iconUp;
+        } else {
+          this.iconSearch = this.iconDown;
+        }
+        break;
+      }
+      case "Start": {
+        this.Start = !this.Start;
+        if (this.Start == true) {
+          this.iconStart = this.iconUp;
+        } else {
+          this.iconStart = this.iconDown;
+        }
+        break;
+      }
+      case "Filter": {
+        this.Filter = !this.Filter;
+        if (this.Filter == true) {
+          this.iconFilter = this.iconUp;
+        } else {
+          this.iconFilter = this.iconDown;
+        }
+        break;
+      }
     }
   }
 
-  MostrarStart(){
-    this.Start  = !this.Start;
-    if(this.Start == true){
-      this.iconStart = this.iconUp;
-    }else{
-      this.iconStart = this.iconDown;
-    }
-  }
 
-  metFilEstrellas(filtro){
+  metFilEstrellas(filtro) {
     console.log('filtro ' + filtro);
   }
 
-  buscarHotel(evento){
+  buscarHotel(evento) {
 
     this.filtrarHoteles.emit(evento);
   }
 
-  cantidadEstrellas(cantidad){
-    
+  cantidadEstrellas(cantidad) {
+
     let estrellas: number[] = [];
-    for(let i = 1; i <= cantidad; i++){
+    for (let i = 1; i <= cantidad; i++) {
       estrellas.push(i);
     }
     return estrellas;

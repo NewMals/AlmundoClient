@@ -20,12 +20,4 @@ export class ItemHotelComponent {
     console.log('Hello ItemHotelComponent Component');
     this.text = 'Hello World';
   }
-
-  cantidadEstrellas(cantidad){
-    let estrellas: number[] = [];
-    for(var i = 1; i <= cantidad; i++){
-      estrellas.push(i);
-    }
-    return estrellas;
-  }
 }
