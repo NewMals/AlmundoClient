@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { hotel } from '../../modelo/hotel';
+import { filtros } from '../../modelo/Filtros';
 
 /**
  * Generated class for the BuscarHabitacionesPage page.
@@ -15,32 +16,33 @@ import { hotel } from '../../modelo/hotel';
   selector: 'page-buscar-habitaciones',
   templateUrl: 'buscar-habitaciones.html',
 })
-export class BuscarHabitacionesPage implements OnInit{
+export class BuscarHabitacionesPage implements OnInit {
 
-  ListaHoteles : Array<hotel>;
-  ListaHotelesTemp : Array<hotel>;
+  ListaHoteles: Array<hotel>;
+  ListaHotelesTemp: Array<hotel>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private api: ApiProvider) {
   }
 
   ionViewDidLoad() {
-   
+
   }
 
   ngOnInit(): void {
-    this.api.consultarGlobal('assets/data/data.json').then(lista =>{
+    this.api.consultarGlobal('assets/data/data.json').then(lista => {
       this.ListaHoteles = lista as Array<hotel>;
       this.ListaHotelesTemp = this.ListaHoteles;
     });
   }
 
-  filtros(fil){
+  filtros(fil: filtros) {
     this.ListaHoteles = this.ListaHotelesTemp;
-    console.log( 'filtro', fil , this.ListaHoteles)
-    this.ListaHoteles = this.ListaHoteles.filter(i => 
-        i.name.toString().toLowerCase().indexOf(fil.toLowerCase()) !== -1 
+
+    this.ListaHoteles = this.ListaHoteles.filter(i =>
+      ( i.name.toLowerCase().indexOf(fil.nombre.toLowerCase()) !== -1) ||
+      fil.estrellas.find(start => i.starts == start)
     );
-    console.log( 'filtro', fil , this.ListaHoteles)
+    console.log('filtro', fil, this.ListaHoteles)
   }
 
 }

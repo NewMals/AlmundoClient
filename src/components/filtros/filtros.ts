@@ -1,4 +1,5 @@
-import { Component, Output, EventEmitter, ElementRef, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { filtros } from '../../modelo/Filtros';
 
 /**
  * Generated class for the FiltrosComponent component.
@@ -10,12 +11,11 @@ import { Component, Output, EventEmitter, ElementRef, ViewChild, OnChanges, Simp
   selector: 'filtros',
   templateUrl: 'filtros.html'
 })
-export class FiltrosComponent implements OnChanges {
+export class FiltrosComponent {
 
+  @Output() filtrarHoteles: EventEmitter<filtros> = new EventEmitter<filtros>();
 
-  ngOnChanges(): void {
-      console.log(this.filtro.nativeElement);
-  }
+  filtrosBuqueda: filtros = new filtros();
 
   iconUp: string = "ios-arrow-up"
   iconDown: string = "ios-arrow-down"
@@ -27,21 +27,22 @@ export class FiltrosComponent implements OnChanges {
   Filter: boolean = true;
 
   filtroEstrella = [
-    { valor: 1, check: false }
-    , { valor: 2, check: false }
-    , { valor: 3, check: false }
+    { valor: 0, check: false }
+    , { valor: 5, check: false }
     , { valor: 4, check: false }
-    , { valor: 5, check: false }]
-    ;
-  @Output() filtrarHoteles: EventEmitter<any> = new EventEmitter<any>();
-  @ViewChild('filtro') filtro : ElementRef
+    , { valor: 3, check: false }
+    , { valor: 2, check: false }
+    , { valor: 1, check: false }
+  ]
+
 
   constructor() {
     console.log('Hello FiltrosComponent Component');
     this.iconSearch = this.iconUp;
     this.iconStart = this.iconUp;
     this.iconFilter = this.iconUp;
-
+    this.filtrosBuqueda.estrellas = new Array<number>();
+    this.filtrosBuqueda.nombre = "";
   }
 
 
@@ -79,12 +80,43 @@ export class FiltrosComponent implements OnChanges {
 
 
   metFilEstrellas(filtro) {
-    console.log('filtro ' + filtro);
+
+    switch (filtro.check) {
+      case true : {
+        if (filtro.valor == 0) { 
+          this.filtroEstrella.forEach(estrella => {
+            if(estrella.valor != 0){
+              estrella.check = false;
+            }
+            
+          });
+          this.filtrosBuqueda.estrellas = new Array<number>();
+          this.filtrosBuqueda.estrellas.push(filtro.valor);
+        } else
+        {
+          if(this.filtrosBuqueda.estrellas[0] == 0 ){
+            this.filtrosBuqueda.estrellas.shift();
+            this.filtroEstrella[0].check =false;
+            console.log(this.filtroEstrella);
+          }
+          
+          this.filtrosBuqueda.estrellas.push(filtro.valor);
+          this.filtrarHoteles.emit(this.filtrosBuqueda);
+        }
+        break;
+      }
+      case false :{
+        this.filtrosBuqueda.estrellas.splice(this.filtrosBuqueda.estrellas.indexOf(filtro.valor) , 1);
+        this.filtrarHoteles.emit(this.filtrosBuqueda);
+        break;
+      }
+    }
+
   }
 
   buscarHotel(evento) {
-
-    this.filtrarHoteles.emit(evento);
+    this.filtrosBuqueda.nombre = evento
+    this.filtrarHoteles.emit(this.filtrosBuqueda);
   }
 
   cantidadEstrellas(cantidad) {

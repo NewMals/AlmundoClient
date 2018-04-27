@@ -1,6 +1,6 @@
 <!-- Generated template for the FiltrosComponent component -->
 <div>
-  <ion-item #filtro class="ContenedorFiltroApp" >
+  <ion-item class="ContenedorFiltroApp" >
       <label class="lblName">Filtrar</label>
       <button style="background: transparent" (click)="Mostrar('Filter')">
           <ion-icon color="primary" [name]="iconFilter"></ion-icon>
@@ -42,15 +42,15 @@
         </button>
       </button>
       <div *ngIf="Start">
-        <ion-item>
+        <!-- <ion-item>
           <ion-label>Todas las estrellas</ion-label>
           <ion-checkbox (ionChange)="metFilEstrellas(filtro)"></ion-checkbox>
-        </ion-item>
-        <ion-item *ngFor="let filtro of filtroEstrella.reverse()">
+        </ion-item> -->
+        <ion-item *ngFor="let filtro of filtroEstrella">
           <ion-label class="contenedorStart">
-            <label class="icon-start" [ngStyle]="{'width' : filtro.valor * 2 + '0px' , 'background-repeat': 'space' , 'background-size': '20px' , 'height': '20px' }"></label>
+            <label class="icon-start" [ngStyle]="{'width' : filtro.valor * 2 + '0px' , 'background-repeat': 'space' , 'background-size': '20px' , 'height': '20px' }"> {{filtro.valor == 0 ? 'Todas las estrellas' : ''}}</label>
           </ion-label>
-          <ion-checkbox [(ngModel)]="filtro.check" (ionChange)="metFilEstrellas(filtro.valor)"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="filtro.check" (ionChange)="metFilEstrellas(filtro)"></ion-checkbox>
         </ion-item>
       </div>
     </ion-card-content>
