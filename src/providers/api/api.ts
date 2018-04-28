@@ -11,20 +11,21 @@ import { hotel } from '../../modelo/hotel';
 @Injectable()
 export class ApiProvider {
   
+  route : string = "http://localhost:9000/";
 
   constructor(public http: HttpClient) {
     console.log('Hello ApiProvider Provider');
   }
 
   consultarGlobal(controlador: string) {
-      return this.http.get(controlador).toPromise().then(response =>{
-        return response;
+      return this.http.get(this.route + controlador).toPromise().then(response =>{
+        return response as any;
       });
  
   }
 
   consultar(controlador: string, nombre: string){
-    return this.http.get(controlador + nombre).toPromise().then(response =>{
+    return this.http.get(this.route + controlador + nombre).toPromise().then(response =>{
        return response;
     });
   }

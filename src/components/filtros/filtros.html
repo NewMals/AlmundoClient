@@ -24,7 +24,7 @@
       </ion-item>
       <ion-row class="contenedorRow" *ngIf="Search">
         <ion-col>
-          <ion-searchbar [(ngModel)]="text" placeholder="Ingrese el nombre del hotel"></ion-searchbar>
+          <ion-input [(ngModel)]="text" placeholder="Ingrese el nombre del hotel"></ion-input>
         </ion-col>
         <ion-col class="contenedorCol">
           <button class="BtnVer" (click)="buscarHotel(text)">
@@ -34,13 +34,13 @@
       </ion-row>
     </ion-card-content>
     <ion-card-content>
-      <button ion-item>
-        <label class="icon-start"></label>
+      <ion-item>
+        <ion-icon name="start"></ion-icon>
         <label class="lblName">Estrellas</label>
         <button item-end style="background: transparent" (click)="Mostrar('Start')">
           <ion-icon color="primary" [name]="iconStart"></ion-icon>
         </button>
-      </button>
+      </ion-item>
       <div *ngIf="Start">
         <!-- <ion-item>
           <ion-label>Todas las estrellas</ion-label>

@@ -93,13 +93,20 @@ export class FiltrosComponent {
           this.filtrosBuqueda.estrellas = new Array<number>();
           this.filtrosBuqueda.estrellas.push(filtro.valor);
         } else {
+          this.filtroEstrella.forEach(estrella => {
+            if (estrella.valor == 0) {
+              estrella.check = false;
+            }
+
+          });
+          
           if (this.filtrosBuqueda.estrellas[0] == 0) {
             this.filtrosBuqueda.estrellas.shift();
-            this.filtroEstrella[0].check = false;
           }
 
           this.filtrosBuqueda.estrellas.push(filtro.valor);
           this.filtrarHoteles.emit(this.filtrosBuqueda);
+          console.log(this.filtroEstrella   );
         }
         break;
       }

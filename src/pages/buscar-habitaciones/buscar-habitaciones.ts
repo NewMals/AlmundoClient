@@ -29,8 +29,8 @@ export class BuscarHabitacionesPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.api.consultarGlobal('assets/data/data.json').then(lista => {
-      this.ListaHoteles = lista as Array<hotel>;
+    this.api.consultarGlobal('Listado').then(lista => {
+      this.ListaHoteles = lista.data as Array<hotel>;
       this.ListaHotelesTemp = this.ListaHoteles;
     });
   }
