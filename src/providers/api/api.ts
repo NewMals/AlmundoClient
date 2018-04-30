@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ApiProvider {
 
-  routeApi: string = "http://localhost:9000/";
+  routeApi: string = "http://localhost:9000/" // "https://frozen-reaches-32174.herokuapp.com" //Ambiente productivo;
 
   constructor(public http: HttpClient) {
     console.log('Hello ApiProvider Provider');
