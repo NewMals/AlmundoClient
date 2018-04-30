@@ -50,7 +50,7 @@
           <ion-label class="contenedorStart">
             <label class="icon-start" [ngStyle]="{'width' : filtro.valor * 2 + '0px' , 'background-repeat': 'space' , 'background-size': '20px' , 'height': '20px' }"> {{filtro.valor == 0 ? 'Todas las estrellas' : ''}}</label>
           </ion-label>
-          <ion-checkbox [(ngModel)]="filtro.check" (ionChange)="metFilEstrellas(filtro)"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="filtro.check" (click)="metFilEstrellas(filtro)"></ion-checkbox>
         </ion-item>
       </div>
     </ion-card-content>

@@ -27,7 +27,7 @@ export class FiltrosComponent {
   Filter: boolean = true;
 
   filtroEstrella = [
-    { valor: 0, check: false }
+    { valor: 0, check: true }
     , { valor: 5, check: false }
     , { valor: 4, check: false }
     , { valor: 3, check: false }
@@ -81,46 +81,37 @@ export class FiltrosComponent {
 
   metFilEstrellas(filtro) {
 
-    switch (filtro.check) {
-      case true: {
-        if (filtro.valor == 0) {
-          this.filtroEstrella.forEach(estrella => {
-            if (estrella.valor != 0) {
-              estrella.check = false;
-            }
-
-          });
-          this.filtrosBuqueda.estrellas = new Array<number>();
-          this.filtrosBuqueda.estrellas.push(filtro.valor);
-        } else {
-          this.filtroEstrella.forEach(estrella => {
-            if (estrella.valor == 0) {
-              estrella.check = false;
-            }
-
-          });
-          
-          if (this.filtrosBuqueda.estrellas[0] == 0) {
-            this.filtrosBuqueda.estrellas.shift();
+    if (filtro.check) {
+      if (filtro.valor == 0) {
+        this.filtroEstrella.forEach(estrella => {
+          if (estrella.valor != 0) {
+            estrella.check = false;
           }
+        });
+        this.filtrosBuqueda.estrellas = new Array<number>();
+        this.filtrosBuqueda.estrellas.push(filtro.valor);
+      } else {
+        this.filtroEstrella.forEach(estrella => {
+          if (estrella.valor == 0) {
+            estrella.check = false;
+          }
+        });
+        this.filtrosBuqueda.estrellas.push(filtro.valor);
 
-          this.filtrosBuqueda.estrellas.push(filtro.valor);
-          this.filtrarHoteles.emit(this.filtrosBuqueda);
-          console.log(this.filtroEstrella   );
+        if (this.filtrosBuqueda.estrellas[0] == 0) {
+          this.filtrosBuqueda.estrellas.splice(0, 1);
         }
-        break;
       }
-      case false: {
-        this.filtrosBuqueda.estrellas.splice(this.filtrosBuqueda.estrellas.indexOf(filtro.valor), 1);
-        this.filtrarHoteles.emit(this.filtrosBuqueda);
-        break;
-      }
+    } else {
+      this.filtrosBuqueda.estrellas.splice(this.filtrosBuqueda.estrellas.indexOf(filtro.valor), 1);
     }
 
+    this.filtrarHoteles.emit(this.filtrosBuqueda);
   }
 
   buscarHotel(evento) {
-    this.filtrosBuqueda.nombre = evento
+    
+    this.filtrosBuqueda.nombre = (evento) ? evento : "";
     this.filtrarHoteles.emit(this.filtrosBuqueda);
   }
 

@@ -29,19 +29,36 @@ export class BuscarHabitacionesPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.api.consultarGlobal('Listado').then(lista => {
-      this.ListaHoteles = lista.data as Array<hotel>;
+    this.consultaInicial();
+  }
+
+  consultaInicial() {
+    this.api.consultarGlobal('Listado').then(response => {
+      console.log(response);
+      this.ListaHoteles = response.data as Array<hotel>;
       this.ListaHotelesTemp = this.ListaHoteles;
     });
   }
 
   filtros(fil: filtros) {
-    this.ListaHoteles = this.ListaHotelesTemp;
+    console.log('filtros', fil);
+    if (fil.nombre || fil.estrellas) {
+      this.api.consultarFiltro('Listado', fil ).then(response =>{
 
-    this.ListaHoteles = this.ListaHoteles.filter(i =>
-      ( i.name.toLowerCase().indexOf(fil.nombre.toLowerCase()) !== -1) ||
-      (fil.estrellas.find(start => start ===  i.starts))
-    );
+        this.ListaHoteles = response.Lista
+      });
+    }else{
+      this.consultaInicial();
+
+    }
+
+
+    // this.ListaHoteles = this.ListaHotelesTemp;
+
+    // this.ListaHoteles = this.ListaHoteles.filter(i =>
+    //   ( i.name.toLowerCase().indexOf(fil.nombre.toLowerCase()) !== -1) ||
+    //   (fil.estrellas.find(start => start ===  i.starts))
+    // );
     // console.log('filtro',fil.estrellas.find(start => start === 5));
   }
 

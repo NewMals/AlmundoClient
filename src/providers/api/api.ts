@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { hotel } from '../../modelo/hotel';
+import { filtros } from '../../modelo/Filtros';
 
 /*
   Generated class for the ApiProvider provider.
@@ -11,22 +12,25 @@ import { hotel } from '../../modelo/hotel';
 @Injectable()
 export class ApiProvider {
   
-  route : string = "http://localhost:9000/";
+  routeApi : string = "http://localhost:9000/";
 
   constructor(public http: HttpClient) {
     console.log('Hello ApiProvider Provider');
   }
 
   consultarGlobal(controlador: string) {
-      return this.http.get(this.route + controlador).toPromise().then(response =>{
+      return this.http.get(this.routeApi + controlador).toPromise().then(response =>{
         return response as any;
       });
  
   }
 
-  consultar(controlador: string, nombre: string){
-    return this.http.get(this.route + controlador + nombre).toPromise().then(response =>{
-       return response;
-    });
+  consultarFiltro(controlador: string, body: any){
+     return this.http.post(this.routeApi + controlador , body ).toPromise().then(response =>{
+      return response as any;
+   });
+    // return this.http.get(this.routeApi + controlador + "/" + nombre).toPromise().then(response =>{
+    //    return response as any;
+    // });
   }
 }
