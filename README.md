@@ -1,7 +1,7 @@
 # AlmundoClient
 Front-end para la aplicación de prueba para Almundo
 
-- Para utilizar este proyecto se necesita tener las siguientes herramientos
+- Para utilizar este proyecto se necesita tener las siguientes herramientas
 
 - Descargar npm y node js en la version (6.11.0 en adelante)
 ```sh
@@ -29,6 +29,16 @@ Front-end para la aplicación de prueba para Almundo
  - Ejecutar en la linea de comandos a nivel donde se encuentra el proyecto
 ```sh
     ionic serve
+```
+# Agregar plataformas para generar los archivos correspondientes
+
+ - para web 
+```sh
+    cordova platform add browser
+```
+ - para android 
+```sh
+    cordova platform add android
 ```
 
 # Generar proyecto modo produccion
