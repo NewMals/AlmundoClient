@@ -1,15 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { hotel } from '../../modelo/hotel';
 import { filtros } from '../../modelo/Filtros';
-
-/**
- * Generated class for the BuscarHabitacionesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -21,11 +14,8 @@ export class BuscarHabitacionesPage implements OnInit {
   ListaHoteles: Array<hotel>;
   ListaHotelesTemp: Array<hotel>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private api: ApiProvider) {
-  }
-
-  ionViewDidLoad() {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, private api: ApiProvider,
+    private alertCtrl: AlertController) {
   }
 
   ngOnInit(): void {
@@ -34,32 +24,30 @@ export class BuscarHabitacionesPage implements OnInit {
 
   consultaInicial() {
     this.api.consultarGlobal('Listado').then(response => {
-      console.log(response);
       this.ListaHoteles = response.data as Array<hotel>;
       this.ListaHotelesTemp = this.ListaHoteles;
+    }).catch(error =>{
+      this.Alertas('El servidor no retornó ningun resultado, por favor verifique si se encuentra funcionando');
     });
   }
 
   filtros(fil: filtros) {
-    console.log('filtros', fil);
     if (fil.nombre || fil.estrellas) {
       this.api.consultarFiltro('Listado', fil ).then(response =>{
-
         this.ListaHoteles = response.Lista
       });
     }else{
       this.consultaInicial();
-
     }
+  }
 
+  Alertas(message: string) {
+    let alert = this.alertCtrl.create({
+      title: message,
+      buttons: ['Aceptar']
+    });
 
-    // this.ListaHoteles = this.ListaHotelesTemp;
-
-    // this.ListaHoteles = this.ListaHoteles.filter(i =>
-    //   ( i.name.toLowerCase().indexOf(fil.nombre.toLowerCase()) !== -1) ||
-    //   (fil.estrellas.find(start => start ===  i.starts))
-    // );
-    // console.log('filtro',fil.estrellas.find(start => start === 5));
+    alert.present();
   }
 
 }

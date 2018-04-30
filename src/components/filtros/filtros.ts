@@ -1,12 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { filtros } from '../../modelo/Filtros';
 
-/**
- * Generated class for the FiltrosComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'filtros',
   templateUrl: 'filtros.html'
@@ -110,7 +104,7 @@ export class FiltrosComponent {
   }
 
   buscarHotel(evento) {
-    
+
     this.filtrosBuqueda.nombre = (evento) ? evento : "";
     this.filtrarHoteles.emit(this.filtrosBuqueda);
   }

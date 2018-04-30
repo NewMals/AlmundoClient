@@ -10,7 +10,7 @@
     <ion-col class="PanelIzq">
       <filtros (filtrarHoteles)="filtros($event)"></filtros>
     </ion-col>
-    <ion-col>
+    <ion-col *ngIf="ListaHoteles">
       <div *ngFor="let hotel of ListaHoteles">
         <ion-card class="itemHotel">
           <item-hotel [itemHotel]="hotel"></item-hotel>

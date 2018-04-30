@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { FiltrosComponent } from './filtros/filtros';
 import { ItemHotelComponent } from './hotel/item/item-hotel';
-import { IonicModule } from 'ionic-angular';
+import { IonicModule, IonicPageModule } from 'ionic-angular';
+import { ViewHotelComponent } from './hotel/view/view-hotel';
 @NgModule({
 	declarations: [FiltrosComponent,
-    ItemHotelComponent],
-	imports: [IonicModule],
+    ItemHotelComponent,
+    ViewHotelComponent],
+	imports: [IonicModule, IonicPageModule],
 	exports: [FiltrosComponent,
-    ItemHotelComponent]
+    ItemHotelComponent,
+    ViewHotelComponent]
+    , entryComponents: [
+        ViewHotelComponent
+    ]
 })
 export class ComponentsModule {}

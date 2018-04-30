@@ -1,0 +1,59 @@
+view-hotel {
+    .contenedorImg{
+        max-width: 100%;
+        display: contents;
+    }
+
+    .imagen{
+        height: 200px;
+        // padding: 10px;
+    }
+
+    .contenedorDescripcion{
+        height: 120px; 
+        max-width: 100%;
+        padding: 10px;
+        display: block;
+    }
+
+    .lblName{
+        color: dodgerblue;
+        font-weight: bold;
+        font-size: 16px;
+      } 
+
+    .contenedorStart{
+        display: flex;
+        max-width: 20px;
+      }
+
+      .lblStart{
+        // display: grid;
+        padding: 5px;
+    }
+    
+    .contenedorAmenitie {
+        display: flex;
+    }
+
+    
+.amenitie{
+    height: 30px;
+    width: 30px;
+    padding: 5px; 
+    display: grid;
+    align-items: center;
+}
+.contenedorValor{
+    height: 180px; 
+    max-width: 100%;
+    text-align: center;        
+    border-top: 1px darkgray dashed;
+    border-left: none;
+    margin: auto;
+    display: grid;
+    align-items: center;
+    padding: 35px;
+}
+
+}

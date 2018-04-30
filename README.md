@@ -1,41 +1,55 @@
 # AlmundoClient
 Front-end para la aplicación de prueba para Almundo
 
+- Para utilizar este proyecto se necesita tener las siguientes herramientos
 
+- Descargar npm y node js en la version (6.11.0 en adelante)
 ```sh
-
-# Para utilizar este proyecto se necesita tener las siguientes herramientos
-
-    -- Descargar npm y node js en la version (6.11.0 en adelante)
     https://nodejs.org/en/
-
-    -- ionic 
-    npm install -g ionic
-
-    -- git
-    https://git-scm.com/downloads
+```
     
-```
-
+- ionic 
 ```sh
-# Ejecutar Linea de comandos
-
+    npm install -g ionic    
+```
+- git
+```sh
+    https://git-scm.com/downloads
+```
 - Clonar proyecto
-
-    git clone https://github.com/NewMals/AlmundoClient.git
-
-- Luego ingresar a la carpeta generada y ejecutar
-
-    npm install --save
-
-```
-
 ```sh
+    git clone https://github.com/NewMals/AlmundoClient.git
+```
+- Luego ingresar a la carpeta generada y ejecutar
+```sh
+    npm install --save
+```
 # Lanzar Aplicacion
 
  - Ejecutar en la linea de comandos a nivel donde se encuentra el proyecto
-
+```sh
     ionic serve
-
 ```
 
+# Generar proyecto modo produccion
+
+para web 
+```sh
+    cordova build browser --prod --release 
+```
+para android
+```sh
+    cordova build android --prod --release 
+```
+
+# Generar proyecto modo desarrollo
+
+para web 
+```sh
+    cordova build browser 
+```
+
+para app
+```sh
+    cordova build android 
+```

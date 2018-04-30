@@ -1,0 +1,26 @@
+<ion-content>
+  <button ion-fab mini style="float: right;" (click)="CerrarModal()">
+    <ion-icon name="close"></ion-icon>
+  </button>
+  <ion-card padding style="text-align: center;">
+
+    <ion-row>
+      <ion-col class="contenedorImg">
+        <img id="imagen" src="assets/hotels/{{ViewHotel.image}}" class="imagen" onerror="this.src='assets/icon/picture.svg';" />
+      </ion-col>
+      <ion-col class="contenedorDescripcion">
+        <label class="lblName">{{ViewHotel.name}}</label>
+        <div class="contenedorStart">
+          <div class="lblStart">
+            <label class="icon-start" [ngStyle]="{'width' : ViewHotel.stars * 2 + '0px' , 'background-repeat': 'space' , 'background-size': '20px' , 'height': '20px' }"></label>
+          </div>
+        </div>
+        <div class="contenedorAmenitie">
+          <div class="amenitie" *ngFor="let amenitie of ViewHotel.amenities">
+            <img src="assets/amenities/{{amenitie}}.svg" />
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>
